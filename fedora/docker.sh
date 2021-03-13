@@ -12,6 +12,10 @@ set -u
 # Print all commands to stdout
 set -x
 
+# First remove podman, if its installed
+# It conflicts with docker
+sudo dnf remove -y podman-docker
+
 # Setup the stable repository
 sudo dnf config-manager \
   --add-repo \
