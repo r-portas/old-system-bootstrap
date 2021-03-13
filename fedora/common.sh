@@ -27,3 +27,6 @@ sudo dnf install -y \
   VirtualBox \
   vagrant \
   dnf-plugins-code # Used by docker script
+
+# Set vim as the default editor
+grep -qxF 'export EDITOR=vim' ~/.bash_profile || echo 'export EDITOR=vim' >> ~/.bash_profile

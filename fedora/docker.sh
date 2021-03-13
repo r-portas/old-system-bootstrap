@@ -23,4 +23,6 @@ sudo systemctl start docker
 
 # Create the docker group and add the current user
 sudo groupadd docker
+# Add the current user
+# NOTE this will only be applied after logging out then back in
 sudo usermod -aG docker $USER
