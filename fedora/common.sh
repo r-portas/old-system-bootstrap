@@ -26,6 +26,7 @@ sudo dnf install -y \
   vlc \
   VirtualBox \
   vagrant \
+  gnome-tweaks \
   dnf-plugins-core # Used by docker script
 
 # Set vim as the default editor
