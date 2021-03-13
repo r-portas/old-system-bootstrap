@@ -30,3 +30,6 @@ sudo dnf install -y \
 
 # Set vim as the default editor
 grep -qxF 'export EDITOR=vim' ~/.bash_profile || echo 'export EDITOR=vim' >> ~/.bash_profile
+
+# Tell git to use merge by default
+git config pull.rebase false
