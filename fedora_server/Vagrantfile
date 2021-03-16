@@ -1,0 +1,32 @@
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/fedora33"
+  config.vm.box_version = "3.2.8"
+
+  config.vm.hostname = "fedora33"
+
+  # Kubernetes API
+  config.vm.network "forwarded_port", guest: 6443, host: 6443, host_ip: "127.0.0.1"
+
+  config.vm.synced_folder ".", "/data"
+
+  config.vm.provider "virtualbox" do |vb|
+    # Display the VirtualBox GUI when booting the machine
+    # vb.gui = true
+ 
+    # Customize the amount of memory on the VM:
+    vb.memory = "1024"
+  end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    # Disable the firewall
+    sudo systemctl stop firewalld
+    sudo systemctl disable firewalld
+
+    # Install k3s
+    bash /data/k3s.sh
+
+    cp /etc/rancher/k3s/k3s.yaml /data/k3s.yaml
+  SHELL
+end
