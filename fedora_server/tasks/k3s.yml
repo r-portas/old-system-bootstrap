@@ -1,0 +1,19 @@
+---
+- name: Install requirements
+  become: yes
+  dnf:
+    name:
+      - container-selinux
+      - selinux-policy-base
+      - https://rpm.rancher.io/k3s/stable/common/centos/7/noarch/k3s-selinux-0.2-1.el7_8.noarch.rpm
+
+- name: Install K3s
+  shell: "curl -sfL https://get.k3s.io | sh -s - --disable traefik --disable servicelb --disable-cloud-controller"
+
+- name: Open port 6443
+  become: yes
+  command: firewall-cmd --permanent --add-port=6443/tcp
+
+- name: Restart firewall
+  become: yes
+  command: firewall-cmd --reload
