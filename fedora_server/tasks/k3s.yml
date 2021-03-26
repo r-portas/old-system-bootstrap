@@ -2,6 +2,7 @@
 - name: Install requirements
   become: yes
   dnf:
+    disable_gpg_check: yes
     name:
       - container-selinux
       - selinux-policy-base
