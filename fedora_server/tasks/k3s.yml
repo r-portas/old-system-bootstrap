@@ -22,4 +22,4 @@
 - name: Copy kubeconfig to home directory
   copy:
     src: /etc/rancher/k3s/k3s.yaml
-    dst: ~/k3s.yaml
+    dest: ~/k3s.yaml
