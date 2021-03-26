@@ -18,3 +18,8 @@
 - name: Restart firewall
   become: yes
   command: firewall-cmd --reload
+
+- name: Copy kubeconfig to home directory
+  copy:
+    src: /etc/rancher/k3s/k3s.yaml
+    dst: ~/k3s.yaml
