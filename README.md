@@ -1,6 +1,6 @@
 # system-bootstrap
 
-https://github.com/r-portas/system-bootstrap/actions/workflows/CI/badge.svg
+[![CI](https://github.com/r-portas/system-bootstrap/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/r-portas/system-bootstrap/actions/workflows/CI.yml)
 
 Sets up a new system with common tools
 
