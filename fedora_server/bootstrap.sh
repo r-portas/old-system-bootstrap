@@ -4,4 +4,5 @@
 set -e
 
 sudo dnf install -y ansible
-ansible-playbook playbook.yml --ask-become-pass
+# Uncomment below if not running as root
+ansible-playbook playbook.yml # --ask-become-pass

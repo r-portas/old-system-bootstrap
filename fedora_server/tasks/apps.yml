@@ -1,0 +1,6 @@
+---
+- name: Install apps
+  become: yes
+  dnf:
+    name:
+      - htop
