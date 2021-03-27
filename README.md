@@ -7,6 +7,14 @@ Sets up a new system with common tools
 1. Easy to use, update and maintain
 2. Simplicity
 
+## Usage
+
+## Fedora Server
+
+```bash
+curl -sfL https://raw.githubusercontent.com/r-portas/system-bootstrap/main/fedora_server/install.sh | sh
+```
+
 ## Notes
 
 ### Installing nvidia drivers
