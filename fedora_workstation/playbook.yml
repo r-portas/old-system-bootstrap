@@ -1,0 +1,9 @@
+---
+- name: Fedora Workstation
+  hosts: 127.0.0.1
+  connection: local
+  tasks:
+    - name: packages
+      include: ./tasks/packages.yml
+    - name: docker
+      include: ./tasks/docker.yml

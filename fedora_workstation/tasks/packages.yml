@@ -1,0 +1,22 @@
+---
+- name: Install RPM Fusion Free
+  become: yes
+  dnf:
+    name: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm"
+
+- name: Install RPM Fusion Non Free
+  become: yes
+  dnf:
+    name: "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_major_version }}.noarch.rpm"
+
+- name: Install common packages
+  become: yes
+  dnf:
+    name:
+      - vim
+      - htop
+      - vlc
+      - VirtualBox
+      - vagrant
+      - gnome-tweaks
+      - dnf-plugins-core # Used by to install Docker

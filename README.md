@@ -11,10 +11,16 @@ Sets up a new system with common tools
 
 ## Usage
 
-## Fedora Server
+### Fedora Server
 
 ```bash
 curl -sfL https://raw.githubusercontent.com/r-portas/system-bootstrap/main/fedora_server/install.sh | sh
+```
+
+### Fedora Workstation
+
+```bash
+curl -sfL https://raw.githubusercontent.com/r-portas/system-bootstrap/main/fedora_workstation/install.sh | sh
 ```
 
 ## Notes
