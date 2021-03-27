@@ -27,5 +27,5 @@
 - name: Replace IP address in kubeconfig
   replace:
     path: ~/k3s.yaml
-    regex: "(127.0.0.1)"
+    regex: "(127\.0\.0\.1)"
     replace: "{{ ansible_default_ipv4.address }}"
