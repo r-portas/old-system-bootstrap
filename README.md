@@ -1,5 +1,7 @@
 # system-bootstrap
 
+https://github.com/r-portas/system-bootstrap/actions/workflows/CI/badge.svg
+
 Sets up a new system with common tools
 
 ## Principles
