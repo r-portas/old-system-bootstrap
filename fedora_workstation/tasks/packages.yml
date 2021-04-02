@@ -25,6 +25,34 @@
       - lm_sensors
       - dnf-plugins-core # Used by to install Docker
 
+# - name: Install VSCode
+#   block:
+#     - name: Download VSCode RPM
+#       get_url:
+#         url: https://code.visualstudio.com/sha/download?build=stable&os=linux-rpm-x64
+#         dest: ~/Downloads/vscode.rpm
+#         mode: "u+rwx"
+#         force: yes
+
+#     - name: Install VSCode
+#       become: yes
+#       dnf:
+#         name: ~/Downloads/vscode.rpm
+
+# - name: Install Google Chrome
+#   block:
+#     - name: Download Google Chrome RPM
+#       get_url:
+#         url: https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+#         dest: ~/Downloads/google-chrome.rpm
+#         mode: "u+rwx"
+#         force: yes
+
+#     - name: Install Google Chrome
+#       become: yes
+#       dnf:
+#         name: ~/Downloads/google-chrome.rpm
+
 - name: Set vim as default editor
   lineinfile:
     path: ~/.bash_profile

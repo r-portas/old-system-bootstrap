@@ -2,8 +2,17 @@
 - name: Fedora Workstation
   hosts: 127.0.0.1
   connection: local
+  vars:
+    kubectl_version: v1.20.5
+    k3d_version: v4.4.0
+    kubens_version: v0.9.3
+    kubectx_version: v0.9.3
+    go_version: 1.16.3
+    nvm_version: v0.38.0
   tasks:
-    - name: packages
-      include: ./tasks/packages.yml
-    - name: docker
-      include: ./tasks/docker.yml
+    # - name: packages
+    #   include: ./tasks/packages.yml
+    # - name: docker
+    #   include: ./tasks/docker.yml
+    - name: development
+      include: ./tasks/development.yml

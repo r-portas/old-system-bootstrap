@@ -1,0 +1,62 @@
+---
+- name: Install kubectl
+  become: yes
+  get_url:
+    url: https://dl.k8s.io/release/{{ kubectl_version }}/bin/linux/amd64/kubectl
+    dest: /usr/local/bin/kubectl
+    mode: a+rwx
+
+- name: Install k3d
+  become: yes
+  get_url:
+    url: https://github.com/rancher/k3d/releases/download/{{ k3d_version }}/k3d-linux-amd64
+    dest: /usr/local/bin/k3d
+    mode: a+rwx
+
+- name: Install kubens
+  become: yes
+  get_url:
+    url: https://github.com/ahmetb/kubectx/releases/download/{{ kubens_version }}/kubens
+    dest: /usr/local/bin/kubens
+    mode: a+rwx
+
+- name: Install kubectx
+  become: yes
+  get_url:
+    url: https://github.com/ahmetb/kubectx/releases/download/{{ kubectx_version }}/kubectx
+    dest: /usr/local/bin/kubectx
+    mode: a+rwx
+
+- name: Install skaffold
+  become: yes
+  get_url:
+    url: https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+    dest: /usr/local/bin/skaffold
+    mode: a+rwx
+
+- name: Install Go
+  block:
+    - name: Create /usr/local/go
+      become: yes
+      file:
+        path: /usr/local/go
+        state: directory
+    - name: Download and extract
+      become: yes
+      unarchive:
+        src: https://golang.org/dl/go{{ go_version }}.linux-amd64.tar.gz
+        remote_src: yes
+        dest: /usr/local/go
+    - name: Add Go to path
+      lineinfile:
+        path: ~/.bash_profile
+        line: "export PATH=$PATH:/usr/local/go/bin"
+
+- name: Install Node
+  block:
+    - name: Install NVM
+      shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/{{ nvm_version }}/install.sh | bash
+    - name: Install Node
+      shell: source ~/.bashrc && nvm install node
+    - name: Install pnpm
+      shell: source ~/.bashrc && npm i -g pnpm
