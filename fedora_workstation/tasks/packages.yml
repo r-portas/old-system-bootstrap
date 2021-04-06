@@ -15,7 +15,6 @@
   become: yes
   dnf:
     name:
-      - fish
       - vim
       - htop
       - vlc

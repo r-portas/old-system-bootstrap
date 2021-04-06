@@ -14,5 +14,7 @@
     #   include: ./tasks/packages.yml
     # - name: docker
     #   include: ./tasks/docker.yml
-    - name: development
-      include: ./tasks/development.yml
+    # - name: development
+    #   include: ./tasks/development.yml
+    - name: fish
+      include: ./tasks/fish.yml

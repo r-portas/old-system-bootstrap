@@ -1,0 +1,25 @@
+- name: Install fish
+  become: yes
+  dnf:
+    name:
+      - fish
+      - util-linux-user # Contains chsh
+
+- name: Set fish as shell
+  become: yes
+  shell: "chsh -s /usr/bin/fish {{ ansible_user_id }}"
+
+- name: Create fish functions directory
+  file:
+    path: ~/.config/fish/functions
+    state: directory
+
+- name: Copy k3d-up function
+  template:
+    src: fish/functions/k3d-up.fish
+    dest: ~/.config/fish/functions/k3d-up.fish
+
+- name: Copy k3d-down function
+  template:
+    src: fish/functions/k3d-down.fish
+    dest: ~/.config/fish/functions/k3d-down.fish

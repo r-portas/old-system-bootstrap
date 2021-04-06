@@ -19,6 +19,7 @@
       - containerd.io
 
 - name: Start and enable Docker service
+  become: yes
   systemd:
     name: docker
     state: started
