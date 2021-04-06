@@ -9,12 +9,13 @@
     kubectx_version: v0.9.3
     go_version: 1.16.3
     nvm_version: v0.38.0
+    helm_version: v3.5.3
   tasks:
     # - name: packages
     #   include: ./tasks/packages.yml
     # - name: docker
     #   include: ./tasks/docker.yml
-    # - name: development
-    #   include: ./tasks/development.yml
-    - name: fish
-      include: ./tasks/fish.yml
+    - name: development
+      include: ./tasks/development.yml
+    # - name: fish
+    #   include: ./tasks/fish.yml

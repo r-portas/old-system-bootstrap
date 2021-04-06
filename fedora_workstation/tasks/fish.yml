@@ -29,6 +29,11 @@
     path: ~/.config/fish/config.fish
     line: set PATH /usr/local/go/bin $PATH
 
+- name: Add NVM to fish path
+  lineinfile:
+    path: ~/.config/fish/config.fish
+    line: bass source ~/.nvm/nvm.sh
+
 - name: Create fish functions directory
   file:
     path: ~/.config/fish/functions
@@ -43,8 +48,3 @@
   template:
     src: fish/functions/k3d-down.fish
     dest: ~/.config/fish/functions/k3d-down.fish
-
-- name: Copy nvm function
-  template:
-    src: fish/functions/nvm.fish
-    dest: ~/.config/fish/functions/nvm.fish

@@ -34,6 +34,33 @@
     dest: /usr/local/bin/skaffold
     mode: a+rwx
 
+- name: Install minikube
+  become: yes
+  get_url:
+    url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+    dest: /usr/local/bin/kubectx
+    mode: a+rwx
+
+- name: Install helm
+  block:
+    - name: Create /tmp/helm
+      file:
+        path: /tmp/helm
+        state: directory
+    - name: Download and extract
+      become: yes
+      unarchive:
+        src: "https://get.helm.sh/helm-{{ helm_version }}-linux-amd64.tar.gz"
+        remote_src: yes
+        dest: /tmp/helm
+    - name: Copy helm
+      become: yes
+      copy:
+        remote_src: yes
+        src: /tmp/helm/linux-amd64/helm
+        dest: /usr/local/bin/helm
+        mode: a+rwx
+
 - name: Install Go
   block:
     - name: Create /usr/local/go
@@ -58,5 +85,9 @@
       shell: curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/{{ nvm_version }}/install.sh | bash
     - name: Install Node
       shell: source ~/.bashrc && nvm install node
+      args:
+        executable: /usr/bin/bash
     - name: Install pnpm
       shell: source ~/.bashrc && npm i -g pnpm
+      args:
+        executable: /usr/bin/bash
