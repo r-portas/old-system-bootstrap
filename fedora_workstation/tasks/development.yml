@@ -38,7 +38,7 @@
   become: yes
   get_url:
     url: https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-    dest: /usr/local/bin/kubectx
+    dest: /usr/local/bin/minikube
     mode: a+rwx
 
 - name: Install helm
