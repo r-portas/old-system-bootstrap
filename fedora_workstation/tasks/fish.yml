@@ -5,9 +5,29 @@
       - fish
       - util-linux-user # Contains chsh
 
+- name: Install fisher
+  shell: "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
+  args:
+    executable: /usr/bin/fish
+
+- name: Install bass
+  shell: "fisher install edc/bass"
+  args:
+    executable: /usr/bin/fish
+
 - name: Set fish as shell
   become: yes
   shell: "chsh -s /usr/bin/fish {{ ansible_user_id }}"
+
+- name: Create fish config
+  file:
+    path: ~/.config/fish/config.fish
+    state: touch
+
+- name: Add Go to fish path
+  lineinfile:
+    path: ~/.config/fish/config.fish
+    line: set PATH /usr/local/go/bin $PATH
 
 - name: Create fish functions directory
   file:
@@ -23,3 +43,8 @@
   template:
     src: fish/functions/k3d-down.fish
     dest: ~/.config/fish/functions/k3d-down.fish
+
+- name: Copy nvm function
+  template:
+    src: fish/functions/nvm.fish
+    dest: ~/.config/fish/functions/nvm.fish
