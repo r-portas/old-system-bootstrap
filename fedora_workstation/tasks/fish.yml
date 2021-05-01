@@ -1,9 +1,7 @@
 - name: Install fish
   become: yes
   dnf:
-    name:
-      - fish
-      - util-linux-user # Contains chsh
+    name: fish
 
 - name: Install fisher
   shell: "curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher"
@@ -14,10 +12,6 @@
   shell: "fisher install edc/bass"
   args:
     executable: /usr/bin/fish
-
-- name: Set fish as shell
-  become: yes
-  shell: "chsh -s /usr/bin/fish {{ ansible_user_id }}"
 
 - name: Create fish config
   file:
