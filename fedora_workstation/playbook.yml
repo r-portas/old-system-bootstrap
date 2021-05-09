@@ -3,6 +3,7 @@
   hosts: 127.0.0.1
   connection: local
   vars:
+    user: roy
     kubectl_version: v1.20.5
     k3d_version: v4.4.3
     kubens_version: v0.9.3
@@ -11,6 +12,8 @@
     nvm_version: v0.38.0
     helm_version: v3.5.3
   tasks:
+    - name: other
+      include: ./tasks/other.yml
     - name: packages
       include: ./tasks/packages.yml
     - name: docker

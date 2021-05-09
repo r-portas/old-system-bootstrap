@@ -24,3 +24,16 @@
     name: docker
     state: started
     enabled: yes
+
+- name: Create docker group
+  become: yes
+  group:
+    name: docker
+    state: present
+
+- name: "add user {{ansible_user}} to docker group"
+  become: yes
+  user:
+    name: "{{user}}"
+    groups: docker
+    append: yes

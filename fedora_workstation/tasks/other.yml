@@ -1,0 +1,10 @@
+- name: use iptables as firewalld backend over nftables
+  become: yes
+  replace:
+    path: /etc/firewalld/firewalld.conf
+    regexp: "FirewallBackend=nftables"
+    replace: "FirewallBackend=iptables"
+
+- name: Enable backwards compatibility for cgroups
+  become: yes
+  shell: grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0"
