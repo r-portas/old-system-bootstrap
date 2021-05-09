@@ -24,6 +24,11 @@
       - lm_sensors
       - dnf-plugins-core # Used by to install Docker
 
+- name: Install AppImageLauncher
+  become: yes
+  dnf:
+    name: "https://github.com/TheAssassin/AppImageLauncher/releases/download/v2.2.0/appimagelauncher-2.2.0-travis995.0f91801.x86_64.rpm"
+
 - name: Set vim as default editor
   lineinfile:
     path: ~/.bash_profile
